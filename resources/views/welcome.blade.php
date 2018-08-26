@@ -1,95 +1,109 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.dashboard')
 
-        <title>Laravel</title>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
 
-            .full-height {
-                height: 100vh;
-            }
+@section('css')
+    <link rel="stylesheet" href="css/paginaprincipal.css">
+@endsection
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+@section('content')
 
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+    <div class="carousel-inner"  >
+        <div class="carousel-item active" >
+            <img src= {{asset('images/Slider_2.png')}} slide" alt="First slide" id="imgCarr">
+        </div>
+        <div class="carousel-item">
+            <img src= {{asset('images/Slider_2_2.png')}} slide" alt="Second slide" id="imgCarr">
+        </div>
+        <div class="carousel-item">
+            <img src= {{asset('images/Slider_2_3.png')}} slide" alt="Third slide" id="imgCarr">
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+<div></div>
+    <img src={{ asset('images/Ornamento_separador.png') }} id="ornamento1"><br>
+    <div class="row">
+        <div class="col-md-4">
+            <div >
+                <img class="card-img-top" src={{ asset('images/p1.jpg') }} alt="Card image cap">
+                <div class="card-body">
+                    <img src={{asset('images/Ornamento_separador_rosa.png')}} id="ornamento2">
+                    <p class="card-text">Set de aretes y collar con dije</p>
+                    <p>$450.00</p>
                 </div>
             </div>
         </div>
-    </body>
-</html>
+        <div class="col-md-4">
+            <div >
+                <img class="card-img-top" src={{ asset('images/p2.jpg') }} alt="Card image cap">
+                <div class="card-body">
+                    <img src={{asset('images/Ornamento_separador_rosa.png')}} id="ornamento2">
+                    <p class="card-text">Collar con dije de mariposa</p>
+                    <p>$190.00</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div>
+                <img class="card-img-top" src={{ asset('images/p3.jpg') }} alt="Card image cap">
+                <div class="card-body">
+
+                    <img src={{asset('images/Ornamento_separador_rosa.png')}} id="ornamento2">
+                    <p class="card-text">Set de aretes, dije y pulsera</p>
+                    <p>$390.00</p>
+                </div>
+            </div>
+        </div><br>
+    </div>
+    <img src={{ asset('images/Ornamento_separador.png') }} id="ornamento1"><br>
+    <div class="row">
+        <div class="col-md-3">
+            <ul>
+                <h5 class="subt">Sobre Amor i Pau</h5>
+                <li>Preguntas frecuentes</li>
+                <li>Cómo cuidar tus prendas</li>
+                <li>Catálogo en línea</li>
+            </ul>
+        </div>
+        <div class="col-md-3">
+            <ul>
+                <h5 class="subt">Productos Amor i Pau</h5>
+                <li>Piezas limitadas</li>
+                <li>Nueva colección</li>
+                <li>Prendas con descuento</li>
+            </ul>
+        </div>
+        <div class="col-md-3">
+            <ul>
+                <h5 class="subt">Avisos de privacidad</h5>
+                <li>Política de privacidad</li>
+                <li>Política de cookies</li>
+                <li>Términos y condiciones</li>
+            </ul>
+        </div>
+        <div class="col-md-3">
+            <ul>
+                <h5 class="subt">Registrarme</h5>
+                <li>Cliente</li>
+                <li>Distribuidor</li>
+                <input type="text">
+            </ul>
+        </div>
+    </div>
+@endsection
+@section('Footer')
+@endsection
+
+@section('javascript')
+@endsection
+
