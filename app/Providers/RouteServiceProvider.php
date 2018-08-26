@@ -59,7 +59,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapWebappRoutes()
     {
         Route::prefix('app')
-            ->middleware('web')
+            ->middleware(['web','auth'])
             ->namespace($this->namespace)
             ->group(base_path('routes/webapp.php'));
     }
