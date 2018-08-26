@@ -1,0 +1,72 @@
+.carousel-inner{
+    left: -2% ;
+}
+
+.carousel-item{
+    width: 102%;
+}
+#ornamento1{
+    width:100%;
+}
+.row{
+    width: 97%;
+    position: relative;
+    left: 3vw;
+}
+#ornamento2{
+    width: 100%;
+}
+.card-img-top{
+    height: 35vw;
+    width: 100%;
+}
+li{
+    list-style: none;
+    font-family: Simonetta;
+}
+#imgCarr{
+    height: 40vw;
+    width: 100%;
+}
+.subt{
+    color: #B50055;
+    font-weight: bold;
+    font-family: Felt;
+}
+@font-face{
+    font-family: "Felt";
+    font-style: normal;
+    font-weight: normal;
+    src: local("?"), url("Felt Tip Roman.ttf") format("truetype");
+}
+@font-face{
+    font-family: "Simonetta";
+    font-style: normal;
+    font-weight: normal;
+    src: local("?"), url("Simonetta Regular.ttf") format("truetype");
+}
+p{
+    font-family: Simonetta;
+    text-align: center;
+    font-size: 1.3vw;
+}
+input:focus, input[type]:focus, input{
+    outline: 0 none;
+    width: 100%;
+    border: 1px solid #E22380;
+
+}
+
+@media (min-width: 150px) and (max-width: 767px) {
+    .card-img-top{
+        position: relative;
+        left: 24vw;
+        height: 55vw;
+        width:50%;
+    }
+    p{
+        font-family: Simonetta;
+        text-align: center;
+        font-size: 3vw;
+    }
+}

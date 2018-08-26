@@ -1,0 +1,238 @@
+@font-face {
+    font-family: "Felt";
+    font-style: normal;
+    font-weight: normal;
+    src: local("?"), url("Felt Tip Roman.ttf") format("truetype");
+}
+@font-face {
+     font-family: "Simonetta";
+     font-style: normal;
+     font-weight: normal;
+     src: local("?"), url("Simonetta Regular.ttf") format("truetype");
+}
+a.space {
+      position: relative;
+      font-family: Simonetta;
+      text-decoration: none;
+      color: black;
+      top: -7vw;
+      z-index: 1;
+      left: 4%;
+      font-size: 1.4vw;
+      padding-left: 7%;
+}
+a:hover, a:link {
+     color: black;
+}
+ul{
+    list-style: none;
+}
+#imgHead {
+    width: 100%;
+    position: relative;
+    z-index: 0;
+}
+#iconobs {
+    position: absolute;
+    left: 92%;
+    top: 7vw;
+    width: 2.5vw;
+    height: 2.5vw;
+    z-index: 1;
+}
+#iconoig {
+    position: absolute;
+    left: 89%;
+    top: 7vw;
+    width: 2.4vw;
+    height: 2.4vw;
+    z-index: 1;
+}
+#iconofb {
+    position: absolute;
+    left: 86%;
+    top: 7vw;
+    width: 2.4vw;
+    height: 2.4vw;
+    z-index: 1;
+}
+#imgDes {
+    width: 100%;
+    position: relative;
+    top: -3.8vw;
+    height: 12%;
+}
+a.space2 {
+    position: relative;
+    font-family: Simonetta;
+    text-decoration: none;
+    top: -9vw;
+    z-index: 1;
+    left: 3%;
+    color: pink;
+    font-size: 1.2vw;
+    padding-left: 3%;
+}
+a.space2:link, a.space2:hover {
+    color: pink;
+}
+#foot {
+    position: relative;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+}
+#iconoig2 {
+    position: relative;
+    left: 45vw;
+    top: 6vw;
+    width: 2vw;
+    height: 2vw;
+    z-index: 1;
+}
+#iconofb2 {
+    position: relative;
+    left: 44vw;
+    top: 6vw;
+    width: 2vw;
+    height: 2vw;
+    z-index: 1;
+}
+#logoblanco {
+    position: relative;
+    left:40vw;
+    width: 10%;
+    top: 6vw;
+    z-index: 1;
+}
+#bga {
+    position: relative;
+    left: 3vw;
+    top: 6.5vw;
+    z-index: 1;
+    color: pink;
+    font-family: Simonetta;
+    font-size: 1.4vw;
+}
+#ayp {
+    position: relative;
+    left: 22vw;
+    top: 6.5vw;
+    z-index: 1;
+    color: pink;
+    font-family: Simonetta;
+    font-size: 1.4vw;
+}
+
+@media (min-width: 597px) and (max-width: 767px) {
+    #imgDes {
+        width: 100%;
+        position: relative;
+        top: -4.8vw;
+        height: 12%;
+    }
+
+    a.space2 {
+        position: relative;
+        font-family: Simonetta;
+        text-decoration: none;
+        top: -11vw;
+        z-index: 1;
+        left: 3%;
+        color: pink;
+        font-size: 1.2vw;
+        padding-left: 3%;
+    }
+}
+@media (min-width: 513px) and (max-width: 596px){
+    #imgDes {
+        width: 100%;
+        position: relative;
+        top: -30px;
+        height: 12%;
+    }
+
+    a.space2 {
+        position: relative;
+        font-family: Simonetta;
+        text-decoration: none;
+        top: -66px;
+        z-index: 1;
+        left: 3%;
+        color: pink;
+        font-size: 7px;
+        padding-left: 2.5%;
+    }
+    a.space {
+        position: relative;
+        font-family: Simonetta;
+        text-decoration: none;
+        color: black;
+        top: -45px;
+        z-index: 1;
+        left: 4%;
+        font-size: 8px;
+        padding-left: 6%;
+    }
+}
+@media (min-width: 439px) and (max-width: 512px){
+    #imgDes {
+        width: 100%;
+        position: relative;
+        top: -30px;
+        height: 12%;
+    }
+    a.space2 {
+        position: relative;
+        font-family: Simonetta;
+        text-decoration: none;
+        top: -66px;
+        z-index: 1;
+        left: 3%;
+        color: pink;
+        font-size: 6px;
+        padding-left: 2%;
+    }
+    a.space {
+        position: relative;
+        font-family: Simonetta;
+        text-decoration: none;
+        color: black;
+        top: -43px;
+        z-index: 1;
+        left: 4%;
+        font-size: 8px;
+        padding-left: 5%;
+    }
+}
+
+@media (min-width: 150px) and (max-width: 438px) {
+    #imgDes {
+        width: 100%;
+        position: relative;
+        top: -30px;
+        height: 12%;
+    }
+    a.space2 {
+        position: relative;
+        font-family: Simonetta;
+        text-decoration: none;
+        top: -17vw;
+        z-index: 1;
+        left: 2%;
+        color: pink;
+        font-size: 1.3vw;
+        padding-left: 2%;
+    }
+    a.space {
+        position: relative;
+        font-family: Simonetta;
+        text-decoration: none;
+        color: black;
+        top: -10vw;
+        z-index: 1;
+        left: 3%;
+        font-size: 1.7vw;
+        padding-left: 3%;
+    }
+}
