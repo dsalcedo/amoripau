@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\UsuarioRol;
 
 class User extends Authenticatable
 {
@@ -16,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'activo'
+        'nombre', 'email', 'password', 'activo'
 ];
 
     /**
@@ -27,4 +28,16 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function usuarioRol()
+    {
+        return $this->hasOne(UsuarioRol::class, 'usuario_id', 'id');
+    }
+
+
+    public function getWidgetEditAttribute()
+    {
+     return route('empleado.widget.edit', $this->id);
+    }
+
 }
