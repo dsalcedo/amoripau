@@ -3,6 +3,8 @@
     <title>AMORIPAU</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ asset('bootstrap-datepicker-1.6.4/css/bootstrap-datepicker.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('bootstrap-datepicker-1.6.4/css/bootstrap-datepicker3.min.css') }}">
     <style>
         #header{
             background-color: #E22380;
@@ -86,6 +88,10 @@
             border-bottom: 2px solid #e6e6e6;
             padding: 10px;
         }
+        a:link
+        {
+            text-decoration:none;
+        }
 
     </style>
     <link rel="stylesheet" type="text/css" href="{{ asset('fontawesome5.2/css/all.css') }}">
@@ -100,19 +106,31 @@
             </div>
         </header>
 
-        <div class="" id="mySidebar">
+        <div id="mySidebar">
             <button class="bar-item button "
                     onclick="w3_close()" style="color: black">Close &times;</button>
-            <ul>
+            <ul class="list-unstyled">
                 <li class="panel">
-                    <a class="bar-item" href="{{ route('inicio') }}">
+                    <a class="bar-item" href="{{ route('inicio') }}" style="color:white">
                         <i class="fa fa-home"></i>
                         <span class="sidebar-title active">Inicio </span>
                     </a>
                 </li>
-                <li> <a href="#" class="bar-item button">Link 1</a></li>
-                <li> <a href="#" class="bar-item button">Link 2</a></li>
-                <li> <a href="#" class="bar-item button">Link 3</a></li>
+                <li class="panel">
+                    <a class="bar-item" href="{{ route('empleados.index') }}" style="color:white">
+                        <i class="fas fa-user"></i>
+                        <span class="sidebar-title active">Empleados</span>
+                    </a>
+                </li>
+                <li class="panel">
+                    <a data-toggle="collapse" href="#configuracion" role="button" aria-expanded="false" aria-controls="collapseExample" style="color: white;" class="bar-item">
+                        <i class="fas fa-cogs"></i>
+                        <span class="sidebar-title">Configuración</span>
+                    </a>
+                    <ul class="collapse list-unstyled " id="configuracion">
+                        <li class="panel"><a id="personal" class="bar-item"><i class="fas fa-gem"></i><span class="sidebar-title">Tipo de joya</span></a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
 
@@ -148,6 +166,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="{{ asset('bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('sweetalert/sweetalert.min.js') }}"></script>
     @yield('javascript')
 
 </body>

@@ -14,9 +14,9 @@ class UsuariosTableSeeder extends Seeder
     public function run()
     {
         $usuarios = [
-            ['nombre'=>'Admin', 'email'=>'admin@amoripau.com','password'=> bcrypt('password'), 'activo' => true],
-            ['nombre'=>'Empleado', 'email'=>'empleado@amoripau.com','password'=> bcrypt('password'),'activo' => true],
-            ['nombre'=>'Cliente', 'email'=>'recepcion@amoripau.com','password'=> bcrypt('password'),'activo' => true],
+            ['nombre'=>'Admin','p_paterno'=>'usuario','p_materno'=>'usuario','email'=>'admin@amoripau.com','password'=> bcrypt('password'), 'activo' => true],
+            ['nombre'=>'Empleado','p_paterno'=>'usuario','p_materno'=>'usuario','email'=>'empleado@amoripau.com','password'=> bcrypt('password'),'activo' => true],
+            ['nombre'=>'Cliente','p_paterno'=>'usuario','p_materno'=>'usuario','email'=>'recepcion@amoripau.com','password'=> bcrypt('password'),'activo' => true],
         ];
 
 
