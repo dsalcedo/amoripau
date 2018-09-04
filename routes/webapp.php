@@ -6,4 +6,5 @@ Route::group(['namespace'=>'Webapp'], function($r){
     $r->post('/empleados/store','UsuariosController@empleadosStore')->name('empleados.store');
     $r->get('/empleado/widget/edit/{empleado_id}','UsuariosController@empleadoWidgetEdit')->name('empleado.widget.edit');
     $r->put('/empleado/update/{empleado_id}','UsuariosController@empleadoUpdate')->name('empleado.update');
+    $r->get('/productos','ProductosController@index')->name('productos.index');
 });
