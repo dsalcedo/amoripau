@@ -73,22 +73,42 @@
                 </div>
                 {{Form::open(['route'=>'empleados.store'])}}
                 <div class="modal-body">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label><b>Nombre:</b></label>
-                            {{Form::text('nombre',null,['class'=>'form-control','required'])}}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label><b>Nombre:</b></label>
+                                {{Form::text('nombre',null,['class'=>'form-control','required'])}}
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label><b>Email:</b></label>
-                            {{Form::text('email',null,['class'=>'form-control','required'])}}
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label><b>Apellido paterno:</b></label>
+                                {{Form::text('p_paterno',null,['class'=>'form-control','required'])}}
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label><b>Contraseña:</b></label>
-                            <input name="password" class="form-control" type="password" required>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label><b>Apellido materno:</b></label>
+                                {{Form::text('p_materno',null,['class'=>'form-control','required'])}}
+                            </div>
+                        </div>
+                        <div id="fecha_n" class="col-md-6">
+                            <label><b>Fecha de nacimiento:</b></label>
+                            <div class="input-group date">
+                                <input name="fecha_nacimiento" type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label><b>Email:</b></label>
+                                {{Form::text('email',null,['class'=>'form-control','required'])}}
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label><b>Contraseña:</b></label>
+                                <input name="password" class="form-control" type="password" required>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -116,5 +136,20 @@
             $('#empleadoEditModal .modal-content').empty();
             $('#empleadoEditModal .modal-content').load($(this).data('url'));
         });
+    </script>
+    <script>
+        $('.input-group.date').datepicker({
+            orientation: "bottom auto",
+            language: "es",
+        });
+    </script>
+
+    <script>
+        @if(session()->has('registro'))
+            swal("El registro fue exitoso!", "", "success");
+        @endif
+        @if(session()->has('update'))
+        swal("Se modificarón exitosamente los datos!", "", "success");
+        @endif
     </script>
 @endsection

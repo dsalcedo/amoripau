@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\UsuarioRol;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 
 class UsuariosController extends Controller
 {
@@ -93,8 +94,12 @@ class UsuariosController extends Controller
 
     public function empleadosStore(Request $request)
     {
+
         $empleado= new User();
         $empleado->nombre = $request->nombre;
+        $empleado->p_paterno = $request->p_paterno;
+        $empleado->p_materno = $request->p_materno;
+        $empleado->fecha_nacimiento = Carbon::parse($request->fecha_nacimiento);
         $empleado->email = $request->email;
         $empleado->password = bcrypt($request->password);
         $empleado->activo = true;
