@@ -13,4 +13,5 @@ Route::group(['namespace'=>'Webapp'], function($r){
     $r->get('/tipo/producto/widget/edit/{tipo_producto_id}','TipoProductoController@tipoProductoWidgetEdit')->name('tipo.producto.widget.edit');
     $r->put('/tipo/producto/update/{tipo_producto_id}','TipoProductoController@update')->name('tipo.producto.update');
 
+    $r->get('/productos','ProductosController@index')->name('productos.index');
 });
