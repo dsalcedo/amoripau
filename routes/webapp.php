@@ -14,4 +14,10 @@ Route::group(['namespace'=>'Webapp'], function($r){
     $r->put('/tipo/producto/update/{tipo_producto_id}','TipoProductoController@update')->name('tipo.producto.update');
 
     $r->get('/productos','ProductosController@index')->name('productos.index');
+
+    $r->get('/pureza','PurezasController@index')->name('purezas.index');
+    $r->post('pureza/store','PurezasController@store')->name('purezas.store');
+    $r->get('/pureza/widget/edit/{pureza_id}','PurezasController@purezaWidgetEdit')->name('pureza.widget.edit');
+    $r->put('/pureza/update/{pureza_id}','PurezasController@Update')->name('pureza.update');
+
 });
