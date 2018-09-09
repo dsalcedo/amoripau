@@ -5,7 +5,7 @@
     <div class="page-header clearfix">
         <div class="row">
             <div class="col-sm-12">
-                <h4 class="mt-0 mb-5">Promociones</h4>
+                <h4 class="mt-0 mb-5">Productos</h4>
             </div>
         </div>
     </div>
@@ -15,12 +15,12 @@
             <div class="col-md-12" >
                 <div class="widget">
                     <div class="widget-heading">
-                        <h3>Promociones</h3>
+                        <h3>Productos</h3>
                     </div>
                     <div class="widget-body">
                         <div class="row">
                             <div class="col-md-12 text-right">
-                                <button class="btn btn-success" data-toggle="modal" data-target="#modalPromociones">Registrar Promocion</button>
+                                <button class="btn btn-success" data-toggle="modal" data-target="#modalProductos">Registrar Producto</button>
                             </div>
                         </div>
                         <br>
@@ -30,25 +30,29 @@
                                     <table class="table-bordered" width="100%">
                                         <thead>
                                         <tr>
-                                            <th class="text-center">Nombre</th>
-                                            <th class="text-center">Descipcion</th>
-                                            <th class="text-center">Multiplicando</th>
-                                            <th class="text-center">Multiplicador</th>
-                                            <th class="text-center">Opciones:</th>
+                                            <th>Nombre</th>
+                                            <th>Modelo</th>
+                                            <th>Cantidad disponible</th>
+                                            <th>Precio por unidad</th>
+                                            <th>Pureza</th>
+                                            <th>Promoción</th>
+                                            <th>Tipo Producto</th>
+                                            <th>Opciones</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($promocion as $promo)
+                                        @foreach($productos as $producto)
                                             <tr>
-                                                <td class="text-center">{{$promo->nombre}}</td>
-                                                <td class="text-center">{{$promo->descripcion}}</td>
-                                                <td class="text-center">{{$promo->multiplicando}}</td>
-                                                <td class="text-center">{{$promo->multiplicador}}</td>
-                                                <td class="text-center">
-                                                    <div>
-                                                        <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                                                        <button type="button" class="btn btn-primary modal-widget" data-toggle="modal" data-target="#promocionEditModal" data-url="{{$promo->widget_edit}}"><i class="fas fa-pencil-alt"></i></button>
-                                                    </div>
+                                                <td>{{$producto->nombre}}</td>
+                                                <td>{{$producto->modelo}}</td>
+                                                <td>{{$producto->cantidad}}</td>
+                                                <td>{{$producto->precio}}</td>
+                                                <td>{{$producto->pureza->nombre}}</td>
+                                                <td>{{$producto->promocion->nombre}}</td>
+                                                <td>{{$producto->tipoProducto->nombre}}</td>
+                                                <td>
+                                                    <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                                                    <button type="button" class="btn btn-primary modal-widget" data-toggle="modal" data-target="#productoEditModal" data-url="{{$producto->widget_edit}}"><i class="fas fa-pencil-alt"></i></button>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -63,16 +67,16 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modalPromociones" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modalProductos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="promocionModalLabel">Formulario promocion</h5>
+                    <h5 class="modal-title" id="productoModalLabel">Formulario producto</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                {{Form::open(['route'=>'promocion.store'])}}
+                {{Form::open(['route'=>'producto.store'])}}
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-12">
@@ -83,20 +87,38 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label><b>Descripción:</b></label>
-                                {{Form::textArea('descripcion',null,['class'=>'form-control','rows'=>4])}}
+                                <label><b>Modelo:</b></label>
+                                {{Form::text('modelo',null,['class'=>'form-control','required'])}}
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label><b>Multiplicando:</b></label>
-                                {{Form::number('multiplicando',null,['class'=>'form-control','required'])}}
+                                <label><b>Cantidad:</b></label>
+                                {{Form::number('cantidad',null,['class'=>'form-control','required'])}}
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label><b>Multiplicador:</b></label>
-                                {{Form::number('multiplicador',null,['class'=>'form-control','required'])}}
+                                <label><b>Precio:</b></label>
+                                {{Form::number('precio',null,['class'=>'form-control','required'])}}
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label><b>Pureza:</b></label>
+                                {{Form::select('purezas_id',$purezas,null,['class'=>'form-control','required'])}}
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label><b>Promocion:</b></label>
+                                {{Form::select('promocion_id',$promocion,null,['class'=>'form-control','required'])}}
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label><b>Tipo Producto:</b></label>
+                                {{Form::select('tipo_producto_id',$tipo_producto,null,['class'=>'form-control','required'])}}
                             </div>
                         </div>
                     </div>
@@ -110,7 +132,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="promocionEditModal" tabindex="-1" role="dialog" aria-labelledby="promocionEditModalLabel" aria-hidden="true">
+    <div class="modal fade" id="productoEditModal" tabindex="-1" role="dialog" aria-labelledby="productoEditModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
 
@@ -122,8 +144,8 @@
 @section('javascript')
     <script>
         $(document).on('click', '.modal-widget', function (e) {
-            $('#promocionEditModal .modal-content').empty();
-            $('#promocionEditModal .modal-content').load($(this).data('url'));
+            $('#productoEditModal .modal-content').empty();
+            $('#productoEditModal .modal-content').load($(this).data('url'));
         });
     </script>
     <script>
@@ -142,3 +164,4 @@
         @endif
     </script>
 @endsection
+

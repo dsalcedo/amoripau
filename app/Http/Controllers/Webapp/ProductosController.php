@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Webapp;
 
+use App\Models\TipoProducto;
 use Illuminate\Http\Request;
 use App\Models\Producto;
+use App\Models\Pureza;
+use App\Models\Promocion;
 use App\Http\Controllers\Controller;
 
 class ProductosController extends Controller
@@ -16,7 +19,10 @@ class ProductosController extends Controller
     public function index()
     {
         $productos = Producto::get();
-        return view('dashboard.productos.index',compact('productos'));
+        $purezas = Pureza::all()->pluck('nombre','id');
+        $promocion =Promocion::all()->pluck('nombre','id');
+        $tipo_producto = TipoProducto::all()->pluck('nombre','id');
+        return view('dashboard.producto.index',compact('productos','purezas','promocion','tipo_producto'));
     }
 
     /**
@@ -26,7 +32,7 @@ class ProductosController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -37,7 +43,10 @@ class ProductosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        Producto::create($request->all());
+
+        return redirect()->back()->with(['registro'=>'Registro Exitoso']);
     }
 
     /**
@@ -71,9 +80,24 @@ class ProductosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $producto = Producto::find($id);
+        $producto->nombre = $request->nombre;
+        $producto->modelo = $request->modelo;
+        $producto->cantidad = $request->cantidad;
+        $producto->precio = $request->precio;
+        $producto->purezas_id = $request->purezas_id;
+        $producto->promocion_id = $request->promocion_id;
+        $producto->tipo_producto_id = $request->tipo_producto_id;
+        $producto->save();
+        return redirect()->back()->with(['update'=>'Actualización  de datos exitosa']);
     }
-
+    public function productoWidgetEdit($producto_id){
+        $producto = Producto::find($producto_id);
+        $purezas = Pureza::all()->pluck('nombre','id');
+        $promociones = Promocion::all()->pluck('nombre','id');
+        $tipo_productos = TipoProducto::all()->pluck('nombre','id');
+        return view('dashboard.producto.edit_widget',compact('producto','purezas','promociones','tipo_productos'));
+    }
     /**
      * Remove the specified resource from storage.
      *

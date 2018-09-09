@@ -32,6 +32,7 @@
                                         <tr>
                                             <th class="text-center">Nombre</th>
                                             <th class="text-center">Descipcion</th>
+                                            <th class="text-center">Opciones</th>
                                         </tr>
                                         </thead>
                                         <tbody>
