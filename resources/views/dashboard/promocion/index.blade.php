@@ -90,13 +90,13 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label><b>Multiplicando:</b></label>
-                                {{Form::textArea('multiplicando',null,['class'=>'form-control','rows'=>4])}}
+                                {{Form::number('multiplicando',null,['class'=>'form-control','required'])}}
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label><b>DMultiplicador:</b></label>
-                                {{Form::textArea('multiplicador',null,['class'=>'form-control','rows'=>4])}}
+                                <label><b>Multiplicador:</b></label>
+                                {{Form::number('multiplicador',null,['class'=>'form-control','required'])}}
                             </div>
                         </div>
                     </div>

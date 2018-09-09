@@ -31,7 +31,6 @@
                                         <thead>
                                         <tr>
                                             <th>Nombre</th>
-                                            <th>Clave</th>
                                             <th>Modelo</th>
                                             <th>Cantidad disponible</th>
                                             <th>Precio por unidad</th>
@@ -45,7 +44,6 @@
                                         @foreach($productos as $producto)
                                             <tr>
                                                 <td>{{$producto->nombre}}</td>
-                                                <td>{{$producto->clave}}</td>
                                                 <td>{{$producto->modelo}}</td>
                                                 <td>{{$producto->cantidad}}</td>
                                                 <td>{{$producto->precio}}</td>
@@ -54,7 +52,7 @@
                                                 <td>{{$producto->tipoProducto->nombre}}</td>
                                                 <td>
                                                     <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                                                    <button type="button" class="btn btn-primary modal-widget" data-toggle="modal" data-target="#empleadoEditModal" data-url=""><i class="fas fa-pencil-alt"></i></button>
+                                                    <button type="button" class="btn btn-primary modal-widget" data-toggle="modal" data-target="#productoEditModal" data-url="{{$producto->widget_edit}}"><i class="fas fa-pencil-alt"></i></button>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -73,7 +71,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="promocionModalLabel">Formulario producto</h5>
+                    <h5 class="modal-title" id="productoModalLabel">Formulario producto</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -85,12 +83,6 @@
                             <div class="form-group">
                                 <label><b>Nombre:</b></label>
                                 {{Form::text('nombre',null,['class'=>'form-control','required'])}}
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label><b>Clave:</b></label>
-                                {{Form::text('clave',null,['class'=>'form-control','required'])}}
                             </div>
                         </div>
                         <div class="col-md-12">

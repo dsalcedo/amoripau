@@ -12,7 +12,6 @@ class Producto extends Model
 
     protected $fillable = [
         'nombre',
-        'clave',
         'modelo',
         'cantidad',
         'precio',
@@ -30,5 +29,9 @@ class Producto extends Model
     }
     public function tipoProducto(){
         return $this->hasOne(tipoProducto::class, 'id', 'tipo_producto_id');
+    }
+    public function getWidgetEditAttribute()
+    {
+        return route('producto.widget.edit', $this->id);
     }
 }
