@@ -3,22 +3,32 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Pureza;
+use App\Models\Promocion;
 
 class Producto extends Model
 {
     protected $table= "productos";
 
     protected $fillable = [
-        'id',
         'nombre',
         'clave',
         'modelo',
+        'cantidad',
         'precio',
+        'purezas_id',
+        'promocion_id',
+        'tipo_producto_id',
     ];
 
-    /*public function promocion()
+    public function promocion()
     {
-        return $this->hasOne(User::class,'id','usuario_id');
-    }*/
-
+        return $this->hasOne(promocion::class, 'id', 'promocion_id');
+    }
+    public function pureza(){
+        return $this->hasOne(pureza::class, 'id', 'purezas_id');
+    }
+    public function tipoProducto(){
+        return $this->hasOne(tipoProducto::class, 'id', 'tipo_producto_id');
+    }
 }
