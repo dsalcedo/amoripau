@@ -123,14 +123,20 @@
                     </a>
                 </li>
                 <li class="panel">
+                    <a class="bar-item" href="{{ route('producto.index') }}" style="color:white">
+                        <i class="fas fa-boxes"></i>
+                        <span class="sidebar-title active">Productos</span>
+                    </a>
+                </li>
+                <li class="panel">
                     <a data-toggle="collapse" href="#configuracion" role="button" aria-expanded="false" aria-controls="collapseExample" style="color: white;" class="bar-item">
                         <i class="fas fa-cogs"></i>
                         <span class="sidebar-title">Configuración</span>
                     </a>
                     <ul class="collapse list-unstyled " id="configuracion">
-                        <li class="panel"><a href="{{ route('purezas.index') }}" id="personal" class="bar-item"><i class="fas fa-atom"></i><span class="sidebar-title">Purezas</span></a></li>
-                        <li class="panel"><a href="{{ route('promocion.index') }}" id="personal" class="bar-item"><i class="fas fa-percent"></i><span class="sidebar-title">Promociones</span></a></li>
-                        <li class="panel"><a href="{{ route('tipo.producto.index') }}" id="personal" class="bar-item"><i class="fas fa-gem"></i><span class="sidebar-title">Tipo de joya</span></a></li>
+                        <li class="panel"><a href="{{ route('purezas.index') }}" id="personal" class="bar-item"><i class="fas fa-atom"></i><span class="sidebar-title"> Purezas</span></a></li>
+                        <li class="panel"><a href="{{ route('promocion.index') }}" id="personal" class="bar-item"><i class="fas fa-tag"></i><span class="sidebar-title"> Promociones</span></a></li>
+                        <li class="panel"><a href="{{ route('tipo.producto.index') }}" id="personal" class="bar-item"><i class="fas fa-gem"></i><span class="sidebar-title"> Tipo de joya</span></a></li>
                     </ul>
                 </li>
             </ul>
