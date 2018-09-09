@@ -101,14 +101,14 @@
     <div class="main-container-fluid" id="main-container">
         <header class="header" id="header" >
             <div class="row-fluid" style="padding-left: 15px">
-                <button id="openNav" class="" onclick="w3_open()" style="height: 100%; width: 5%;">&#9776;</button>
-                <img src="{{ asset('images/Amoripau_logo_blanco.png') }}" alt="" width="100" id="logo">
+                <button id="openNav" class="" onclick="w3_open()" style="height: 100%; width: 5%; color: white; background-color: #E22380; border-color: #E22380;">&#9776;</button>
+                <img src="{{ asset('images/Amoripau_logo_blanco.png') }}" alt="" width="100" id="logo" style="padding: 5px;">
             </div>
         </header>
 
         <div id="mySidebar">
-            <button class="bar-item button "
-                    onclick="w3_close()" style="color: black">Close &times;</button>
+            <button class="bar-item button btn-danger text-center "
+                    onclick="w3_close()" style="color: white;"><h4>Cerrar &times;</h4></button>
             <ul class="list-unstyled">
                 <li class="panel">
                     <a class="bar-item" href="{{ route('inicio') }}" style="color:white">
@@ -128,7 +128,9 @@
                         <span class="sidebar-title">Configuración</span>
                     </a>
                     <ul class="collapse list-unstyled " id="configuracion">
-                        <li class="panel"><a id="personal" class="bar-item"><i class="fas fa-gem"></i><span class="sidebar-title">Tipo de joya</span></a></li>
+                        <li class="panel"><a href="{{ route('purezas.index') }}" id="personal" class="bar-item"><i class="fas fa-atom"></i><span class="sidebar-title">Purezas</span></a></li>
+                        <li class="panel"><a href="{{ route('promocion.index') }}" id="personal" class="bar-item"><i class="fas fa-percent"></i><span class="sidebar-title">Promociones</span></a></li>
+                        <li class="panel"><a href="{{ route('tipo.producto.index') }}" id="personal" class="bar-item"><i class="fas fa-gem"></i><span class="sidebar-title">Tipo de joya</span></a></li>
                     </ul>
                 </li>
             </ul>
