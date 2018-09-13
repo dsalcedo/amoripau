@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Webapp;
 
+use App\Models\ProductoImagen;
 use App\Models\TipoProducto;
 use Illuminate\Http\Request;
 use App\Models\Producto;
 use App\Models\Pureza;
 use App\Models\Promocion;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class ProductosController extends Controller
 {
@@ -43,9 +45,12 @@ class ProductosController extends Controller
      */
     public function store(Request $request)
     {
-
-        Producto::create($request->all());
-
+        $producto = Producto::create($request->all());
+        $producto_imagen = new ProductoImagen();
+        $path = $request->file('imagen')->store('/public/uploads/productos');
+        $producto_imagen->producto_id = $producto->id;
+        $producto_imagen->ruta = substr($path, 6);
+        $producto_imagen->save();
         return redirect()->back()->with(['registro'=>'Registro Exitoso']);
     }
 
@@ -68,7 +73,11 @@ class ProductosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $producto = Producto::find($id);
+        $purezas = Pureza::all()->pluck('nombre','id');
+        $promociones = Promocion::all()->pluck('nombre','id');
+        $tipo_productos = TipoProducto::all()->pluck('nombre','id');
+        return view('dashboard.producto.edit',compact('producto','purezas','promociones','tipo_productos'));
     }
 
     /**
@@ -91,7 +100,8 @@ class ProductosController extends Controller
         $producto->save();
         return redirect()->back()->with(['update'=>'Actualización  de datos exitosa']);
     }
-    public function productoWidgetEdit($producto_id){
+    public function productoWidgetEdit($producto_id)
+    {
         $producto = Producto::find($producto_id);
         $purezas = Pureza::all()->pluck('nombre','id');
         $promociones = Promocion::all()->pluck('nombre','id');
@@ -107,6 +117,16 @@ class ProductosController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function imageStore(Request $request)
+    {
+        $producto_imagen = new ProductoImagen();
+        $path = $request->file('imagen')->store('/public/uploads/productos');
+        $producto_imagen->producto_id = $request->producto_id;
+        $producto_imagen->ruta = substr($path, 6);
+        $producto_imagen->save();
+        return redirect()->back()->with(['registro'=>'Registro Exitoso']);
     }
 
 }

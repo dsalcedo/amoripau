@@ -52,7 +52,8 @@
                                                 <td>{{$producto->tipoProducto->nombre}}</td>
                                                 <td>
                                                     <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                                                    <button type="button" class="btn btn-primary modal-widget" data-toggle="modal" data-target="#productoEditModal" data-url="{{$producto->widget_edit}}"><i class="fas fa-pencil-alt"></i></button>
+                                                    <!--button type="button" class="btn btn-primary modal-widget" data-toggle="modal" data-target="#productoEditModal" data-url="{{--$producto->widget_edit--}}"><i class="fas fa-pencil-alt"></i></button-->
+                                                     <a  href="{{route('producto.edit',$producto->id)}}" ><button  type="button" class="btn btn-primary "><i class="fas fa-pencil-alt"></i></button></a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -76,7 +77,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                {{Form::open(['route'=>'producto.store'])}}
+                {{Form::open(['route'=>'producto.store', 'files' => true])}}
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-12">
@@ -119,6 +120,12 @@
                             <div class="form-group">
                                 <label><b>Tipo Producto:</b></label>
                                 {{Form::select('tipo_producto_id',$tipo_producto,null,['class'=>'form-control','required'])}}
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label><b>Tipo Producto:</b></label>
+                                {{Form::File('imagen',null,['class'=>'form-control'])}}
                             </div>
                         </div>
                     </div>

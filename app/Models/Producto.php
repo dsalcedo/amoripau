@@ -24,14 +24,26 @@ class Producto extends Model
     {
         return $this->hasOne(promocion::class, 'id', 'promocion_id');
     }
-    public function pureza(){
+
+    public function pureza()
+    {
         return $this->hasOne(pureza::class, 'id', 'purezas_id');
     }
-    public function tipoProducto(){
+
+    public function tipoProducto()
+    {
         return $this->hasOne(tipoProducto::class, 'id', 'tipo_producto_id');
     }
+
+    public function imagenes()
+    {
+        return $this->hasMany( ProductoImagen::class, 'producto_id','id');
+    }
+
     public function getWidgetEditAttribute()
     {
         return route('producto.widget.edit', $this->id);
     }
+
+
 }

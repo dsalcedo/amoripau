@@ -14,7 +14,9 @@ Route::group(['namespace'=>'Webapp'], function($r){
     $r->put('/tipo/producto/update/{tipo_producto_id}','TipoProductoController@update')->name('tipo.producto.update');
 
     $r->get('/producto','ProductosController@index')->name('producto.index');
-    $r->post('producto/store','ProductosController@store')->name('producto.store');
+    $r->post('/producto/store','ProductosController@store')->name('producto.store');
+    $r->get('/producto/edit/{producto_id}', 'ProductosController@edit')->name('producto.edit');
+    $r->post('','ProductosController@imageStore')->name('producto.imageStore');
     $r->get('/producto/widget/edit/{producto_id}','ProductosController@productoWidgetEdit')->name('producto.widget.edit');
     $r->put('/producto/update/{producto_id}','ProductosController@Update')->name('producto.update');
 
