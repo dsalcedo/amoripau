@@ -9,7 +9,8 @@ use App\Models\Producto;
 use App\Models\Pureza;
 use App\Models\Promocion;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Image;
 
 class ProductosController extends Controller
 {
@@ -46,11 +47,24 @@ class ProductosController extends Controller
     public function store(Request $request)
     {
         $producto = Producto::create($request->all());
-        $producto_imagen = new ProductoImagen();
-        $path = $request->file('imagen')->store('/public/uploads/productos');
+
+        $ruta = public_path().'/img/';
+        // recogida del form
+        $path = $request->file('imagen');
+        // crear instancia de imagen
+        $imagen = Image::make($path);
+        // generar un nombre aleatorio para la imagen
+        $random = Str::random();
+        $temp_name = $random.'.'. $path->getClientOriginalExtension();
+        $imagen->save($ruta . $temp_name, 100);
+
+
+        $producto_imagen = new ProductoImagen;
         $producto_imagen->producto_id = $producto->id;
-        $producto_imagen->ruta = substr($path, 6);
+        $producto_imagen->ruta = $temp_name;
         $producto_imagen->save();
+
+        //return redirect('personajes/create');
         return redirect()->back()->with(['registro'=>'Registro Exitoso']);
     }
 
@@ -121,10 +135,16 @@ class ProductosController extends Controller
 
     public function imageStore(Request $request)
     {
-        $producto_imagen = new ProductoImagen();
-        $path = $request->file('imagen')->store('/public/uploads/productos');
+        $producto_imagen = new ProductoImagen;
+        $ruta = public_path().'/img/';
+        $path = $request->file('imagen');
+        $imagen = Image::make($path);
         $producto_imagen->producto_id = $request->producto_id;
-        $producto_imagen->ruta = substr($path, 6);
+        $random = Str::random();
+        $temp_name = $random.'.'. $path->getClientOriginalExtension();
+        $imagen->save($ruta . $temp_name, 100);
+        $producto_imagen->ruta = $temp_name;
+
         $producto_imagen->save();
         return redirect()->back()->with(['registro'=>'Registro Exitoso']);
     }

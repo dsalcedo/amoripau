@@ -101,9 +101,39 @@
     <div class="main-container-fluid" id="main-container">
         <header class="header" id="header" >
             <div class="row-fluid" style="padding-left: 15px">
-                <button id="openNav" class="" onclick="w3_open()" style="height: 100%; width: 5%; color: white; background-color: #E22380; border-color: #E22380;">&#9776;</button>
-                <img src="{{ asset('images/Amoripau_logo_blanco.png') }}" alt="" width="100" id="logo" style="padding: 5px;">
+
+                <button id="openNav" class="" onclick="w3_open()" style="height: 100%; width: 5%; color: white; background-color: #E22380; border-color: #E22380; margin-right: 1px;">&#9776;</button>
+                <img src="{{ asset('images/Amoripau_logo_blanco.png') }}" alt="" width="100" id="logo" style="padding: 5px; margin-left: 50px; height: 60px; width: 160px; ">
+                <div style="float:right; margin:20px; color:white">
+                    <ul class="navbar-nav ml-auto" style=" align-content:right;">
+                        <!-- Authentication Links -->
+                        @guest
+
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="color:white;">
+                                    {{ Auth::user()->nombre }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        Cerrar sesiòn
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
+                </div>
+
+
             </div>
+
         </header>
 
         <div id="mySidebar">
@@ -177,6 +207,7 @@
     <script type="text/javascript" src="{{ asset('bootstrap-datepicker-1.6.4/js/bootstrap-datepicker.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('sweetalert/sweetalert.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/jquery.elevatezoom.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery.mlens-1.7.js') }}"></script>
     @yield('javascript')
 
 </body>
