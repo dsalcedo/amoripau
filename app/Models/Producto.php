@@ -39,7 +39,10 @@ class Producto extends Model
     {
         return $this->hasMany( ProductoImagen::class, 'producto_id','id');
     }
-
+    public function primeraImagen()
+    {
+        return $primeraImagen = ProductoImagen::where('producto_id',$this->id)->get()->first();
+    }
     public function getWidgetEditAttribute()
     {
         return route('producto.widget.edit', $this->id);

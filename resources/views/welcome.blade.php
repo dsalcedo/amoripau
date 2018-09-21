@@ -33,36 +33,24 @@
 <div></div>
     <img src={{ asset('images/Ornamento_separador.png') }} id="ornamento1"><br>
     <div class="row">
-        <div class="col-md-4">
-            <div >
-                <img class="card-img-top" src={{ asset('images/p1.jpg') }} alt="Card image cap">
-                <div class="card-body">
-                    <img src={{asset('images/Ornamento_separador_rosa.png')}} id="ornamento2">
-                    <p class="card-text">Set de aretes y collar con dije</p>
-                    <p>$450.00</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div >
-                <img class="card-img-top" src={{ asset('images/p2.jpg') }} alt="Card image cap">
-                <div class="card-body">
-                    <img src={{asset('images/Ornamento_separador_rosa.png')}} id="ornamento2">
-                    <p class="card-text">Collar con dije de mariposa</p>
-                    <p>$190.00</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div>
-                <img class="card-img-top" src={{ asset('images/p3.jpg') }} alt="Card image cap">
-                <div class="card-body">
 
-                    <img src={{asset('images/Ornamento_separador_rosa.png')}} id="ornamento2">
-                    <p class="card-text">Set de aretes, dije y pulsera</p>
-                    <p>$390.00</p>
+
+        <div>
+            @foreach($producto as $produ)
+                <div class="col-md-4">
+                <div>
+                    @isset($produ->primeraImagen()->ruta)
+                    <img class="card-img-top" src="{{asset('img/'.$produ->primeraImagen()->ruta)}}"  alt="Card image cap">
+                    <div class="card-body">
+                        <img src={{asset('images/Ornamento_separador_rosa.png')}} id="ornamento2">
+                        <p class="card-text">Collar con dije de mariposa</p>
+                        <p>$190.00</p>
+                    </div>
+                        @endisset
                 </div>
             </div>
+
+            @endforeach
         </div><br>
     </div>
     <img src={{ asset('images/Ornamento_separador.png') }} id="ornamento1"><br>
