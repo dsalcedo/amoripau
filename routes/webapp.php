@@ -12,6 +12,7 @@ Route::group(['namespace'=>'Webapp'], function($r){
     $r->post('/tipo/producto/store','TipoProductoController@store')->name('tipo.producto.store');
     $r->get('/tipo/producto/widget/edit/{tipo_producto_id}','TipoProductoController@tipoProductoWidgetEdit')->name('tipo.producto.widget.edit');
     $r->put('/tipo/producto/update/{tipo_producto_id}','TipoProductoController@update')->name('tipo.producto.update');
+    $r->get('/tipo/producto/eliminar/{tipo_producto_id}','TipoProductoController@eliminar')->name('tipo.producto.eliminar');
 
     $r->get('/producto','ProductosController@index')->name('producto.index');
     $r->post('/producto/store','ProductosController@store')->name('producto.store');
@@ -19,15 +20,18 @@ Route::group(['namespace'=>'Webapp'], function($r){
     $r->post('','ProductosController@imageStore')->name('producto.imageStore');
     $r->get('/producto/widget/edit/{producto_id}','ProductosController@productoWidgetEdit')->name('producto.widget.edit');
     $r->put('/producto/update/{producto_id}','ProductosController@Update')->name('producto.update');
+    $r->get('/producto/eliminar/{producto_id}','ProductosController@eliminar')->name('producto.eliminar');
 
     $r->get('/pureza','PurezasController@index')->name('purezas.index');
     $r->post('pureza/store','PurezasController@store')->name('purezas.store');
     $r->get('/pureza/widget/edit/{pureza_id}','PurezasController@purezaWidgetEdit')->name('pureza.widget.edit');
     $r->put('/pureza/update/{pureza_id}','PurezasController@Update')->name('pureza.update');
+    $r->get('/pureza/eliminar/{pureza_id}','PurezasController@eliminar')->name('pureza.eliminar');
 
     $r->get('/promocion','PromocionController@index')->name('promocion.index');
     $r->post('promocion/store','PromocionController@store')->name('promocion.store');
     $r->get('/promocion/widget/edit/{promocion_id}','PromocionController@promocionWidgetEdit')->name('promocion.widget.edit');
     $r->put('/promocion/update/{promocion_id}','PromocionController@Update')->name('promocion.update');
+    $r->get('/promocion/eliminar/{promocion_id}','PromocionController@eliminar')->name('promocion.eliminar');
 
 });

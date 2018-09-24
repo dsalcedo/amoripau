@@ -17,6 +17,7 @@ class CreateTipoProductosTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->text('descripcion')->nullable();
+            $table->boolean('activo')->default(true);
             $table->timestamps();
         });
     }

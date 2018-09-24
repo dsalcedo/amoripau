@@ -15,7 +15,7 @@ class PromocionController extends Controller
      */
     public function index()
     {
-        $promocion = Promocion::all();
+        $promocion = Promocion::where('activo',true)->get();
         return view('dashboard.promocion.index',compact('promocion'));
     }
 
@@ -95,4 +95,13 @@ class PromocionController extends Controller
     {
         //
     }
+
+    public function eliminar($id){
+
+        $promocion = Promocion::find($id);
+        $promocion->activo = false;
+        $promocion->save();
+        return redirect()->back()->with(['Eliminado'=>'La promoción fue eliminada']);
+    }
+
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Webapp;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\TipoProducto;
+use App\Models\Producto;
 
 class TipoProductoController extends Controller
 {
@@ -15,7 +16,7 @@ class TipoProductoController extends Controller
      */
     public function index()
     {
-        $tipo_productos = TipoProducto::all();
+        $tipo_productos = TipoProducto::where('activo',true)->get();
         return view('dashboard.tipo_producto.index',compact('tipo_productos'));
     }
 
@@ -90,8 +91,24 @@ class TipoProductoController extends Controller
         //
     }
 
-    public function tipoProductoWidgetEdit($tipo_producto_id){
+    public function tipoProductoWidgetEdit($tipo_producto_id)
+    {
         $tipo_producto = TipoProducto::find($tipo_producto_id);
         return view('dashboard.tipo_producto.edit_widget',compact('tipo_producto'));
     }
+
+    public function eliminar($id)
+    {
+        $tipo_producto = TipoProducto::find($id);
+        $productos = Producto::where('tipo_producto_id',$tipo_producto->id)->count();
+        if ($productos > 0 ){
+            return redirect()->back()->with(['Error'=>'La pureza no fue eliminada']);
+        }else{
+            $tipo_producto->activo = false;
+            $tipo_producto->save();
+            return redirect()->back()->with(['Eliminado'=>'La pureza fue eliminada']);
+        }
+
+    }
+
 }

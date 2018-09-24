@@ -42,7 +42,7 @@
                                                 <td class="text-center">{{$pureza->descripcion}}</td>
                                                 <td class="text-center">
                                                     <div>
-                                                        <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                                                        <button class="btn btn-danger eliminar" data-id="{{$pureza->id}}"><i class="fas fa-trash-alt"></i></button>
                                                         <button type="button" class="btn btn-primary modal-widget" data-toggle="modal" data-target="#purezaEditModal" data-url="{{$pureza->widget_edit}}"><i class="fas fa-pencil-alt"></i></button>
                                                     </div>
                                                 </td>
@@ -124,5 +124,30 @@
         @if(session()->has('update'))
         swal("Se modificarón exitosamente los datos!", "", "success");
         @endif
+        @if(session()->has('Eliminado'))
+        swal("Se elimino exitosamente la pureza!", "", "success");
+        @endif
+        @if(session()->has('Error'))
+        swal("No se puede eliminar la pureza por que aún hay productos con esta pureza!", "", "warning");
+        @endif
+    </script>
+    <script>
+        $(document).on('click', '.eliminar', function (e) {
+            var id = $(this).data('id');
+            var url = "{{route('pureza.eliminar','id')}}";
+            url = url.replace('id', id);
+            console.log(url);
+            swal("¿estas seguro de querer eliminar la pureza?", " ", "warning", {
+                buttons: {
+                    cancel: "Cancelar",
+                    eliminar: "Eliminar",
+                },
+            })
+                .then((value) => {
+                    if (value == "eliminar"){
+                        window.location = url;
+                    }
+                });
+        });
     </script>
 @endsection

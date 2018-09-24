@@ -17,8 +17,10 @@ class CreatePromocionesTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('descripcion');
-            $table->integer('multiplicando');
-            $table->integer('multiplicador');
+            $table->integer('descuento');
+            $table->boolean('activo')->default(true);
+            //$table->integer('multiplicando');
+            // $table->integer('multiplicador');
             $table->timestamps();
         });
     }

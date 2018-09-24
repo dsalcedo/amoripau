@@ -18,6 +18,8 @@ class Producto extends Model
         'purezas_id',
         'promocion_id',
         'tipo_producto_id',
+        'costo',
+        'activo',
     ];
 
     public function promocion()

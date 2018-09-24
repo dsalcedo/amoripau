@@ -22,6 +22,8 @@ class CreateProductosTable extends Migration
             $table->unsignedInteger('purezas_id');
             $table->unsignedInteger('promocion_id');
             $table->unsignedInteger('tipo_producto_id');
+            $table->float('costo');
+            $table->boolean('activo')->default(true);
             $table->rememberToken();
             $table->timestamps();
         });

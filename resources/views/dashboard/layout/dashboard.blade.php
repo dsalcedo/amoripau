@@ -1,3 +1,4 @@
+<!DOCTYPE HTML>
 <html>
 <head>
     <title>AMORIPAU</title>
@@ -44,14 +45,15 @@
             margin-left: 0%;
         }
         #page-container{
-            position: relative;
             margin-left: 15%;
-            height: 90%;
+            height: 100%;
+            margin-right: 0;
             overflow-y: scroll;
+
+            width: 85%;
         }
         #footer{
             background-color: #E22380;
-            position: relative;
             margin-left: 15%;
             height: 10%;
         }
@@ -87,10 +89,18 @@
             border-top: none;
             border-bottom: 2px solid #e6e6e6;
             padding: 10px;
+            width: 100%;
         }
         a:link
         {
             text-decoration:none;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            color: white;
+            width: 100%;
         }
 
     </style>
@@ -104,8 +114,8 @@
 
                 <button id="openNav" class="" onclick="w3_open()" style="height: 100%; width: 5%; color: white; background-color: #E22380; border-color: #E22380; margin-right: 1px;">&#9776;</button>
                 <img src="{{ asset('images/Amoripau_logo_blanco.png') }}" alt="" width="100" id="logo" style="padding: 5px; margin-left: 50px; height: 60px; width: 160px; ">
-                <div style="float:right; margin:20px; color:white">
-                    <ul class="navbar-nav ml-auto" style=" align-content:right;">
+                <div style="float:right; margin:10px 20px; color:white">
+                    <ul class="navbar-nav ml-auto" style=" justify-content: right;">
                         <!-- Authentication Links -->
                         @guest
 
@@ -184,6 +194,7 @@
         function w3_open() {
             document.getElementById("main-container").style.marginLeft = "15%";
             document.getElementById("page-container").style.marginLeft = "15%";
+            document.getElementById("page-container").style.width = "85%";
             document.getElementById("footer").style.marginLeft = "15%";
             document.getElementById("mySidebar").style.width = "15%";
             document.getElementById("mySidebar").style.display = "block";
@@ -193,7 +204,8 @@
         function w3_close() {
             document.getElementById("main-container").style.marginLeft = "0%";
             document.getElementById("page-container").style.marginLeft = "0%";
-            document.getElementById("main-container").style.marginTop = "0%";
+            document.getElementById("main-container").style.marginTop = "0";
+            document.getElementById("page-container").style.width = "100%";
             document.getElementById("footer").style.marginLeft = "0%";
             document.getElementById("mySidebar").style.display = "none";
             document.getElementById("openNav").style.display = "inline-block";
