@@ -127,6 +127,12 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
+                                            <label><b>Costo:</b></label>
+                                            {{Form::number('costo',$producto->costo,['class'=>'form-control','required'])}}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
                                             <label><b>Pureza:</b></label>
                                             {{Form::select('purezas_id',$purezas,$producto->pureza_id,['class'=>'form-control','required'])}}
                                         </div>
@@ -179,6 +185,14 @@
                     responsive: true       // true if mlens has to be responsive (boolean)
                 });
         });
+    </script>
+    <script>
+        @if(session()->has('registro'))
+        swal("El registro fue exitoso!", "", "success");
+        @endif
+        @if(session()->has('update'))
+        swal("Se modificarón exitosamente los datos!", "", "success");
+        @endif
     </script>
 @endsection
 

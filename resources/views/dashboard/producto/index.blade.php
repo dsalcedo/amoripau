@@ -34,6 +34,7 @@
                                             <th>Modelo</th>
                                             <th>Cantidad disponible</th>
                                             <th>Precio por unidad</th>
+                                            <th>Costo por unidad</th>
                                             <th>Pureza</th>
                                             <th>Promoción</th>
                                             <th>Tipo Producto</th>
@@ -47,12 +48,12 @@
                                                 <td>{{$producto->modelo}}</td>
                                                 <td>{{$producto->cantidad}}</td>
                                                 <td>{{$producto->precio}}</td>
+                                                <td>{{$producto->costo}}</td>
                                                 <td>{{$producto->pureza->nombre}}</td>
                                                 <td>{{$producto->promocion->nombre}}</td>
                                                 <td>{{$producto->tipoProducto->nombre}}</td>
                                                 <td>
-                                                    <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                                                    <!--button type="button" class="btn btn-primary modal-widget" data-toggle="modal" data-target="#productoEditModal" data-url="{{--$producto->widget_edit--}}"><i class="fas fa-pencil-alt"></i></button-->
+                                                    <button class="btn btn-danger eliminar" data-id="{{$producto->id}}"><i class="fas fa-trash-alt"></i></button>
                                                      <a  href="{{route('producto.edit',$producto->id)}}" ><button  type="button" class="btn btn-primary "><i class="fas fa-pencil-alt"></i></button></a>
                                                 </td>
                                             </tr>
@@ -102,6 +103,12 @@
                             <div class="form-group">
                                 <label><b>Precio:</b></label>
                                 {{Form::number('precio',null,['class'=>'form-control','required'])}}
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label><b>Costo:</b></label>
+                                {{Form::number('costo',null,['class'=>'form-control','required'])}}
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -169,6 +176,28 @@
         @if(session()->has('update'))
         swal("Se modificarón exitosamente los datos!", "", "success");
         @endif
+        @if(session()->has('Eliminado'))
+        swal("Se elimino exitosamente el producto!", "", "success");
+        @endif
+    </script>
+    <script>
+        $(document).on('click', '.eliminar', function (e) {
+            var id = $(this).data('id');
+            var url = "{{route('producto.eliminar','id')}}";
+            url = url.replace('id', id);
+            console.log(url);
+            swal("¿estas seguro de querer eliminar el producto?", " ", "warning", {
+                buttons: {
+                    cancel: "Cancelar",
+                    eliminar: "Eliminar",
+                },
+            })
+                .then((value) => {
+                    if (value == "eliminar"){
+                        window.location = url;
+                    }
+                });
+        });
     </script>
 @endsection
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Webapp;
 
+use App\Models\Producto;
 use Illuminate\Http\Request;
 use App\Models\Pureza;
 use App\Http\Controllers\Controller;
@@ -15,7 +16,7 @@ class PurezasController extends Controller
      */
     public function Index()
     {
-        $purezas = Pureza::all();
+        $purezas = Pureza::where('activo',true)->get();
         return view('dashboard.purezas.index',compact('purezas'));
     }
 
@@ -92,5 +93,19 @@ class PurezasController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function eliminar($id)
+    {
+        $pureza = Pureza::find($id);
+        $productos = Producto::where('purezas_id',$pureza->id)->count();
+        if ($productos > 0 ){
+            return redirect()->back()->with(['Error'=>'La pureza no fue eliminada']);
+        }else{
+            $pureza->activo = false;
+            $pureza->save();
+            return redirect()->back()->with(['Eliminado'=>'La pureza fue eliminada']);
+        }
+
     }
 }

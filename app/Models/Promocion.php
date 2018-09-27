@@ -12,8 +12,8 @@ class Promocion extends Model
         'id',
         'nombre',
         'descripcion',
-        'multiplicando',
-        'multiplicador'
+        'descuento',
+        'activo'
     ];
 
     public function getWidgetEditAttribute()

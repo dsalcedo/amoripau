@@ -12,6 +12,7 @@ class Pureza extends Model
         'id',
         'nombre',
         'descripcion',
+        'activo'
     ];
 
     public function getWidgetEditAttribute()

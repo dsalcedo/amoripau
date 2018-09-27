@@ -21,7 +21,7 @@ class ProductosController extends Controller
      */
     public function index()
     {
-        $productos = Producto::get();
+        $productos = Producto::where('activo',true)->get();
         $purezas = Pureza::all()->pluck('nombre','id');
         $promocion =Promocion::all()->pluck('nombre','id');
         $tipo_producto = TipoProducto::all()->pluck('nombre','id');
@@ -108,6 +108,7 @@ class ProductosController extends Controller
         $producto->modelo = $request->modelo;
         $producto->cantidad = $request->cantidad;
         $producto->precio = $request->precio;
+        $producto->costo = $request->costo;
         $producto->purezas_id = $request->purezas_id;
         $producto->promocion_id = $request->promocion_id;
         $producto->tipo_producto_id = $request->tipo_producto_id;
@@ -147,6 +148,14 @@ class ProductosController extends Controller
 
         $producto_imagen->save();
         return redirect()->back()->with(['registro'=>'Registro Exitoso']);
+    }
+
+    public function eliminar($id){
+
+        $producto = Producto::find($id);
+        $producto->activo = false;
+        $producto->save();
+        return redirect()->back()->with(['Eliminado'=>'La promoción fue eliminada']);
     }
 
 }

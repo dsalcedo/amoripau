@@ -21,6 +21,13 @@
         </div>
         <div class="col-md-12">
             <div class="form-group">
+                <label><b>Descuento:</b></label>
+                {{Form::text('descuento',$promocion->multiplicando,['class'=>'form-control'])}}
+            </div>
+        </div>
+        {{--!}}
+        <div class="col-md-12">
+            <div class="form-group">
                 <label><b>Multiplicando:</b></label>
                 {{Form::text('multiplicando',$promocion->multiplicando,['class'=>'form-control'])}}
             </div>
@@ -31,6 +38,7 @@
                 {{Form::text('multiplicador',$promocion->multiplicador,['class'=>'form-control'])}}
             </div>
         </div>
+        {{--}}
     </div>
 </div>
 <div class="modal-footer">
