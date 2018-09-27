@@ -1,8 +1,6 @@
 @extends('layouts.dashboard')
 
 
-
-
 @section('css')
     <link rel="stylesheet" href="css/paginaprincipal.css">
 @endsection
@@ -32,26 +30,26 @@
 </div>
 <div></div>
     <img src={{ asset('images/Ornamento_separador.png') }} id="ornamento1"><br>
-    <div class="row">
-
-
-        <div>
-            @foreach($producto as $produ)
-                <div class="col-md-4">
-                <div>
-                    @isset($produ->primeraImagen()->ruta)
-                    <img class="card-img-top" src="{{asset('img/'.$produ->primeraImagen()->ruta)}}"  alt="Card image cap">
-                    <div class="card-body">
-                        <img src={{asset('images/Ornamento_separador_rosa.png')}} id="ornamento2">
-                        <p class="card-text">Collar con dije de mariposa</p>
-                        <p>$190.00</p>
+    <div class="row-fluid">
+        <div class="col-md-12">
+            <div class="row">
+                @foreach($producto as $produ)
+                    <div class="col-md-4">
+                        <div>
+                            @isset($produ->primeraImagen()->ruta)
+                                <img class="card-img-top" src="{{asset('img/'.$produ->primeraImagen()->ruta)}}"  alt="Card image cap">
+                                <div class="card-body">
+                                    <img src={{asset('images/Ornamento_separador_rosa.png')}} id="ornamento2">
+                            @endisset
+                                    <p class="card-text">{{$produ->nombre}}</p>
+                                    <p>${{$produ->precio}}</p>
+                                    <center> <a  href="{{route('detalle',$produ->id)}}" ><button class="btn" style="background-color: #E22380; color: white;">Ver más</button></a></center>
+                                </div>
+                        </div>
                     </div>
-                        @endisset
-                </div>
+                @endforeach
             </div>
-
-            @endforeach
-        </div><br>
+        </div>
     </div>
     <img src={{ asset('images/Ornamento_separador.png') }} id="ornamento1"><br>
     <div class="row">

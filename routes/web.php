@@ -14,5 +14,6 @@
 
 Route::get('/','TiendaController@index')->name('welcome');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/detalle/{producto_id}','TiendaController@view')->name('detalle');
 Auth::routes();
 

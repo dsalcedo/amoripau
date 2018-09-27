@@ -25,6 +25,15 @@ class TiendaController extends Controller
 
     }
 
+
+    public function view($id)
+    {
+        $producto = Producto::find($id);
+        $pureza = new pureza;
+        $promocion = new promocion;
+        $tipo_producto = new tipoProducto;
+        return view('detalle',compact('producto','pureza','promocion','tipo_producto'));
+    }
     /**
      * Show the form for creating a new resource.
      *
