@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::group(['namespace'=>'api'], function($r) {
+Route::group(['namespace'=>'api', 'middleware' => ['sessions']], function($r) {
 
     $r->post('/add/shopping/cart','ShoppingCartController@add')->name('shoping.cart.add');
     $r->get('/show/shopping/cart','ShoppingCartController@show')->name('shoping.cart.show');

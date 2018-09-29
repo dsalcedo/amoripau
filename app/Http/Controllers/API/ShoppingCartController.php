@@ -42,18 +42,10 @@ class ShoppingCartController extends Controller
     }
 
    */
-   public function __construct()
-   {
-       if (Session::has('cart')){
-           Session::get('cart');
-       } else{
-           Session::put('cart',array());
-       }
-   }
 
-   public function show()
+   public function show(Request $request)
    {
-       return  Session::get('cart');
+       return $request->session()->get('cart');
    }
 
    public function add(Request $request)
@@ -61,10 +53,10 @@ class ShoppingCartController extends Controller
        $producto = Producto::find($request->producto_id);
        $cantidad = $request->qty;
        $producto->qty = $cantidad;
-       $cart = Session::get('cart');
-       array_push($cart,$producto);
-       Session::put('cart',$cart);
-       return  response()->json(Session::get('cart'));
+
+       $request->session()->push('cart.items', $producto);
+
+       return  response()->json($request->session()->get('cart'));
    }
 
    public function delete(Request $request)
@@ -75,9 +67,9 @@ class ShoppingCartController extends Controller
 
    }
 
-   public function trash()
+   public function trash(Request $request)
    {
-       Session::forget('cart');
+       $request->session()->forget('cart');
    }
 
 }
