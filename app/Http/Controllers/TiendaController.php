@@ -7,6 +7,7 @@ use App\Models\Producto;
 use App\Models\Pureza;
 use App\Models\Promocion;
 use App\Models\TipoProducto;
+use Illuminate\Support\Facades\Cookie;
 
 class TiendaController extends Controller
 {
@@ -21,7 +22,8 @@ class TiendaController extends Controller
         $purezas = Pureza::all()->pluck('nombre','id');
         $promociones = Promocion::all()->pluck('nombre','id');
         $tipo_productos = TipoProducto::all()->pluck('nombre','id');
-        return view('welcome',compact('producto','purezas','promociones','tipo_productos'));
+        $carrito = Cookie::get('carrito');
+        return view('welcome',compact('producto','purezas','promociones','tipo_productos','carrito'));
 
     }
 

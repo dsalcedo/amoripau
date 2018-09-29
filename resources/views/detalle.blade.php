@@ -62,6 +62,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label><b>Nombre:</b></label>
+                                                {{ Form::hidden('producto_id',$producto->id,['id'=>'producto_id']) }}
                                                 <label>{{$producto->nombre}}</label>
 
                                             </div>
@@ -109,7 +110,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12 text-right">
-                                        <button type="submit" class="btn btn-primary">Agregar</button>
+                                        <button type="button" class="btn btn-primary agregar">Agregar</button>
                                     </div>
                                 </div>
                                 {{Form::close()}}
@@ -125,4 +126,56 @@
 @endsection
 
 @section('javascript')
+    <script>
+        $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+        });
+    </script>
+    <script>
+
+    </script>
+        <script>
+            $(document).on('click', '.agregar', function(){
+                var producto_id = $('input[name=producto_id]').val();
+                var qty = 1;
+                $.post('{{ route('shoping.cart.add') }}',
+                    {
+                        'producto_id':producto_id,
+                        'qty':qty,
+                    },
+                    function(res) {
+                        console.log(res);
+                    })
+                    .done(function(resultado) {
+
+                        $.get('{{ route('shoping.cart.show') }}',
+                            {
+                            },
+                            function(res) {
+                                console.log(res);
+                            })
+                            .done(function(resultado) {
+
+
+
+
+                            })
+                            .fail(function(response) {
+
+
+                            });
+
+
+                    })
+                    .fail(function(response) {
+
+
+                    });
+
+            });
+        </script>
 @endsection
